@@ -1,0 +1,46 @@
+Write a program that rolls user defined number of dice and displays the sum of the results of the dice rolls.(2p)
+First, program asks the user for the number of dice rolls.
+Then the program throws a die as many times as the user defined.
+Print the sum of the results in the console or in the HTML document.
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dice Roller</title>
+</head>
+<body>
+
+<script>
+  function rollDie() {
+    return Math.floor(Math.random() * 6) + 1;
+  }
+
+  function rollDice(numRolls) {
+    let sum = 0;
+
+    for (let i = 0; i < numRolls; i++) {
+      const rollResult = rollDie();
+      console.log(`Roll ${i + 1}: ${rollResult}`);
+      sum += rollResult;
+    }
+
+    return sum;
+  }
+
+  const numRolls = parseInt(prompt('Enter the number of dice rolls:'));
+
+  if (!isNaN(numRolls) && numRolls > 0) {
+    const totalSum = rollDice(numRolls);
+
+    console.log(`Total Sum: ${totalSum}`);
+    document.body.innerHTML = `<h2>Total Sum: ${totalSum}</h2>`;
+  } else {
+    alert('Please enter a valid positive number for the dice rolls.');
+  }
+</script>
+
+</body>
+</html>
+
